@@ -51,6 +51,8 @@ const vm = new Vue({
         results: [],
         sections: SECTIONS.split(', '),
         section: 'home',
+        loading: true,
+        title: ''
     },
     mounted() {
         this.getPosts(this.section);
@@ -59,7 +61,10 @@ const vm = new Vue({
         getPosts(section) {
             let url = buildUrl(section)
             axios.get(url).then((response) => {
+                this.loading = false;
                 this.results = response.data.results;
+                let title = this.section !== 'home' ? "Top stories in '"+ this.section + "' today" : "Top stories today";
+                this.title = title + "(" + response.data.num_results + ")";
             }).catch( error => { console.log(error); });
         }
     }

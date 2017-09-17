@@ -3,6 +3,30 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+    <style>
+      .container {
+        padding: 20px 0;
+      }
+      .column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
+        float: left;
+      }
+      .main-heading {
+        margin: 10px 0 30px;
+      }
+      .callout {
+        margin-bottom: 40px;
+      }
+      select {
+        text-transform: capitalize;
+      }
+      .loader {
+        text-align: center;
+        padding: 40px;
+      }
+      .uppercase {
+        text-transform: uppercase;
+      }
+    </style>
     <title>The greatest news app ever</title>
   </head>
   <body>
@@ -23,7 +47,9 @@
           </div>
         </form>
       </section>
-      <news-list :results="results"></news-list>
+      <h5 class="text-center uppercase" v-if="!loading">{{ title }}</b></h5>
+      <div v-if="loading" class="loader"><img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="loader"></div>
+      <news-list v-if="!loading" :results="results"></news-list>
     </div>
   </body>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
