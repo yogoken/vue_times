@@ -1,3 +1,5 @@
+"use strict";
+
 const NYTBaseUrl="https://api.nytimes.com/svc/topstories/v2/";
 const ApiKey="aa1030639bd14935877fad15a36d1790";
 
